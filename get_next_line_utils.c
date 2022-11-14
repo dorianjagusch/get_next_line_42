@@ -12,54 +12,79 @@
 
 #include "get_next_line.h"
 
-size_t ft_min(size_t a, size_t b)
+size_t	ft_strlen(const char *s)
 {
-	if (!a && !b)
-		return (0);
-	if (a < b)
-		return (a);
-	return (b);
-}
-
-size_t	ft_linelen(char *s)
-{
-	size_t i;
+	size_t	i;
 
 	i = 0;
-	while (s[i] != '\n' && i < BUFFER_SIZE)
+	while (s[i] != '\0')
 		i++;
-	i++;
 	return (i);
 }
 
-char	*ft_read_whole_line(int *fd, char *line, int iter)
+void	ft_bzero(void *s, size_t n)
 {
-	char	*line;
-	size_t	i;
-	size_t	line_len;
+	size_t			i;
+	unsigned char	*s2;
 
-	i = 1;
-	*(line + (i * BUFFER_SIZE)) = (char *)malloc(BUFFER_SIZE+ 1);
-	if (!line)
+	i = 0;
+	s2 = s;
+	while (i < n)
+		s2[i++] = '\0';
+}
+
+void	*ft_calloc(size_t nmemb, size_t size)
+{
+	void	*mem_arr;
+
+	if ((nmemb * size) / nmemb != size && size > 0 && nmemb > 0)
 		return (NULL);
-	read(fd, line, BUFFER_SIZE * i);
-	line_len = ft_linelen(*(line + (BUFFER_SIZE * i)))
-	if (ft_linelen(line) < BUFFER_SIZE)
-	{
-			line[line_len + BUFFER_SIZE * (i - 1)] = 0;
-			return (line);
-	}
-	ft_read_whole_line(fd, line, i++);
-	ret
-	
+	mem_arr = (void *)malloc(sizeof(*mem_arr) * (nmemb * size));
+	if (!mem_arr)
+		return (NULL);
+	ft_bzero(mem_arr, nmemb * size);
+	return (mem_arr);
 }
 
-ft_is_end_line(char *line)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
+	char	*result;
 	size_t	i;
-	
-	while (line[i] != '\n' && i <= BUFFER_SIZE)
+	size_t	len_s1;
+	size_t	len_s2;
+
+	if (!s1 || !s2)
+		return (NULL);
+	len_s1 = ft_strlen(s1);
+	len_s2 = ft_strlen(s2);
+	i = 0;
+	result = (char *) malloc(sizeof(char) * (len_s1 + len_s2 + 1));
+	if (!result)
+		return (NULL);
+	while (s1[i] != '\0')
+	{
+		result[i] = (char) s1[i];
 		i++;
+	}
+	while (s2[i - len_s1] != '\0')
+	{
+		result[i] = (char) s2[i - len_s1];
+		i++;
+	}
+	result[i] = '\0';
+	return (result);
 }
 
+char	*ft_strchr(const char *s, int c)
+{
+	int		i;
+	char	*str;
 
+	i = 0;
+	str = (char *) s;
+	while (str[i] != c % 256 && str[i] != '\0')
+		i++;
+	if (str[i] != '\0' || c == '\0')
+		return (str + i);
+	return (NULL);
+}

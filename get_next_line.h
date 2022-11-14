@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #ifndef get_next_line_H
- 
+
  # define get_next_line_H
 
  # include "stdlib.h"
@@ -21,8 +21,10 @@
  # define BUFFER_SIZE 42
 
 char	*get_next_line(int fd);
-char	*ft_read_stdin(char *cur_line);
-void	ft_putstr(char *s);
-size_t	ft_linelen(char *s);
+size_t	ft_strlen(const char *s);
+void	ft_bzero(void *s, size_t n);
+void	*ft_calloc(size_t nmemb, size_t size);
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strchr(const char *s, int c);
 
 #endif

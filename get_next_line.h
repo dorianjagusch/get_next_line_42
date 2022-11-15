@@ -11,14 +11,13 @@
 /* ************************************************************************** */
 
 #ifndef get_next_line_H
+# define get_next_line_H
 
- # define get_next_line_H
+# include "stdlib.h"
+# include <sys/types.h>
+# include <unistd.h>
 
- # include "stdlib.h"
- # include <sys/types.h>
- #include <unistd.h>
-
- # define BUFFER_SIZE 42
+# define BUFFER_SIZE 42
 
 char	*get_next_line(int fd);
 size_t	ft_strlen(const char *s);

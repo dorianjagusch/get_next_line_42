@@ -6,17 +6,18 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 13:44:32 by djagusch          #+#    #+#             */
-/*   Updated: 2022/11/14 17:43:49 by djagusch         ###   ########.fr       */
+/*   Updated: 2022/11/15 11:04:11 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <fcntl.h>
+#include <stdio.h>
 
 void	ft_putstr(char *s)
 {
 	if (s)
-		write(1, s, ft_linelen(s));
+		write(1, s, ft_strlen(s));
 }
 
 int main(void)
@@ -31,9 +32,9 @@ int main(void)
 		ft_putstr("open() failed");
 		return (1);
 	}
-	while (i < 20)
+	while (i < 20000)
 	{
-		ft_putstr(get_next_line(fd));
+		printf("%s", get_next_line(fd));
 		ft_putstr("------");
 		i++;
 	}

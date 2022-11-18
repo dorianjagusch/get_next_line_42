@@ -6,7 +6,7 @@
 /*   By: djagusch <djagusch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 13:22:58 by djagusch          #+#    #+#             */
-/*   Updated: 2022/11/15 12:52:39 by djagusch         ###   ########.fr       */
+/*   Updated: 2022/11/18 10:04:31 by djagusch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,12 @@
 static char	*ft_clear_tmp(char *buf, char *tmp_buf)
 {
 	char	*tmp;
-	
-		tmp = ft_strjoin(buf, tmp_buf);
-		free (buf);
-		return (tmp);
+
+	tmp = ft_strjoin(buf, tmp_buf);
+	free (buf);
+	return (tmp);
 }
+
 static char	*ft_fill_buffer(int fd, char *buf)
 {
 	char	*tmp_buf;
@@ -40,13 +41,13 @@ static char	*ft_fill_buffer(int fd, char *buf)
 		tmp_buf[bytes] = '\0';
 		buf = ft_clear_tmp(buf, tmp_buf);
 		if (ft_strchr(buf, '\n'))
-			break;
+			break ;
 	}
 	free(tmp_buf);
 	return (buf);
 }
 
-static char *ft_get_line(char *buf)
+static char	*ft_get_line(char *buf)
 {
 	long	i;
 	char	*line;
@@ -57,6 +58,8 @@ static char *ft_get_line(char *buf)
 	while (buf[i] && buf[i] != '\n')
 		i++;
 	line = ft_calloc(i + 1 + 1, sizeof(char));
+	if (!line)
+		return (NULL);
 	i = 0;
 	while (buf[i] && buf[i] != '\n')
 	{
@@ -68,7 +71,7 @@ static char *ft_get_line(char *buf)
 	return (line);
 }
 
-static char *ft_prep_buffer(char *buf)
+static char	*ft_prep_buffer(char *buf)
 {
 	long	i;
 	long	j;
@@ -93,7 +96,7 @@ static char *ft_prep_buffer(char *buf)
 	return (tmp);
 }
 
-char *get_next_line(int fd)
+char	*get_next_line(int fd)
 {
 	static char	*buf;
 	char		*cur_line;

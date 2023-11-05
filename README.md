@@ -1,7 +1,5 @@
 # get_next_line_42
 
-# libft_42
-
 Nobody wants to read a file in a while-loop reading it in arbitrary lenghts!
 
 ## Description
@@ -34,7 +32,7 @@ to your machine and execute `cd get_next_line && make`.
 ## Usage
   
 The library is compiled into libft.a and can be included in your projects by including the path to the 'libft.h'
-file and linking the library to your project during compilation with -L[path to get_next_line directory]:
+file and linking the library to your project during compilation with -L[path to libft directory]:
 
 ```
 {
@@ -45,6 +43,6 @@ SRC = [your source files]
 INC = [your header files]
 
 $(NAME): $(SRC) $(INC)
-    gcc -I$(INC) $< -o $@
+    gcc -I$(INC) $< -o $@ -L[path to libft directory] -lft
 }
 ```

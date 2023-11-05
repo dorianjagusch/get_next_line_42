@@ -31,8 +31,8 @@ to your machine and execute `cd get_next_line && make`.
   
 ## Usage
   
-The library is compiled into libft.a and can be included in your projects by including the path to the 'libft.h'
-file and linking the library to your project during compilation with -L[path to libft directory]:
+The library is compiled into libft.a (here)[] and can be included in your projects by including the path to the 'libft.h'
+file and linking the library to your project during compilation with -L[libft]:
 
 ```
 {
@@ -43,6 +43,6 @@ SRC = [your source files]
 INC = [your header files]
 
 $(NAME): $(SRC) $(INC)
-    gcc -I$(INC) $< -o $@ -L[path to libft directory] -lft
+    gcc -I$(INC) $< -o $@ -L[libft] -lft
 }
 ```
